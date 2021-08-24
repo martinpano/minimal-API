@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "sNQqomPGnAbLX6OEys9+qQyPgwld6Wv7aO4SzutlulA=",
+  "Source": "todos-api",
+  "BasePath": "_content/todos-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "RelatedManifests": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
