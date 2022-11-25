@@ -15,7 +15,7 @@ ConfigureMiddleware.Configure(app, app.Environment);
 
 
 app.MapPost("/login", (User user, IUserService service) => service.Login(user, builder.Configuration["Jwt:Issuer"], builder.Configuration["Jwt:Audience"], builder.Configuration["Jwt:Key"]));
-//app.MapGet("/teams", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")] () => Helper.GetAllTeams);
+//app.MapGet("/teams", () => Helper.GetAllTeams);
 app.MapGet("/teams", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")] async (ITeamService service) =>
 {
     return await service.GetAllTeamsAsync();

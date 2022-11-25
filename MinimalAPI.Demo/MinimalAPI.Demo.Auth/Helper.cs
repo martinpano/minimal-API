@@ -15,6 +15,7 @@ namespace MinimalAPI.Demo.Auth
         public static async Task CreateTeam(Team team, ITeamService service) => await service.AddTeamAsync(team);
 
         public static async Task UpdateTeam(Team team, int id, ITeamService service) => await service.UpdateTeamAsync(team, id);
+
         public static async Task DeleteTeam(int id, ITeamService service) => await service.DeleteTeamAsync(id);
 
     }

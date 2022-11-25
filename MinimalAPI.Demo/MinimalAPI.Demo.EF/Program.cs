@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Demo.EF.DataAccess;
 using MinimalAPI.Demo.EF.DataAccess.Models;
@@ -42,12 +43,13 @@ app.MapGet("/teams/{id:int}", async (WorldCupDbContext ctx, int id) =>
                         Results.Ok(team) :
                         Results.NotFound("Sorry no such team :("));
 
-app.MapPost("/teams", async (WorldCupDbContext ctx, Team team) =>
+app.MapPost("/teams", async (WorldCupDbContext ctx, [FromBody]Team team) =>
 {
     ctx.Teams.Add(team);
     await ctx.SaveChangesAsync();
     return Results.Created("Team created successfully!", await GetAllTeams(ctx));
-});
+})
+.Produces<Team>(StatusCodes.Status201Created);
 
 app.MapPut("/teams/{id:int}", async (WorldCupDbContext ctx, Team team, int id) =>
 {
